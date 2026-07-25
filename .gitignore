@@ -1,0 +1,30 @@
+# Binaries
+/owl
+/owl.exe
+/bin/
+/dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test / coverage
+*.test
+*.out
+coverage.*
+*.coverprofile
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local config (never commit tokens)
+.env
+.env.*
+*.local
+
+# Go
+vendor/

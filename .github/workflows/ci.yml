@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: true
+      - name: Test
+        run: go test ./... -count=1 -race
+      - name: Build
+        run: go build -o owl ./cmd/owl
+      - name: Version
+        run: ./owl version
+
+  build-matrix:
+    needs: test
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            ext: ""
+          - os: ubuntu-latest
+            goos: linux
+            goarch: arm64
+            ext: ""
+          - os: windows-latest
+            goos: windows
+            goarch: amd64
+            ext: ".exe"
+          - os: macos-latest
+            goos: darwin
+            goarch: amd64
+            ext: ""
+          - os: macos-latest
+            goos: darwin
+            goarch: arm64
+            ext: ""
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: true
+      - name: Cross build
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: "0"
+        run: |
+          go build -ldflags "-X github.com/OwlSpeak/Owl-Agent/internal/cmd.Version=ci -X github.com/OwlSpeak/Owl-Agent/internal/cmd.Commit=${GITHUB_SHA::7}" -o "owl-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./cmd/owl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: owl-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: owl-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}

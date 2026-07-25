@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: true
+      - name: Test
+        run: go test ./... -count=1
+      - name: Build multi-platform
+        env:
+          CGO_ENABLED: "0"
+        run: |
+          set -e
+          VER="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          build() {
+            local goos=$1 goarch=$2 ext=$3
+            local name="owl_${VER}_${goos}_${goarch}${ext}"
+            GOOS=$goos GOARCH=$goarch go build \
+              -ldflags "-s -w -X github.com/OwlSpeak/Owl-Agent/internal/cmd.Version=${VER} -X github.com/OwlSpeak/Owl-Agent/internal/cmd.Commit=${GITHUB_SHA::7} -X github.com/OwlSpeak/Owl-Agent/internal/cmd.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              -o "dist/${name}" ./cmd/owl
+            (cd dist && sha256sum "${name}" >> checksums.txt)
+          }
+          build linux amd64 ""
+          build linux arm64 ""
+          build darwin amd64 ""
+          build darwin arm64 ""
+          build windows amd64 ".exe"
+          ls -la dist
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
