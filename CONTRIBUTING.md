@@ -4,8 +4,8 @@
 
 ```bash
 go test ./...
-go build -o bin/owl ./cmd/owl
-./bin/owl doctor
+go build -o bin/newt ./cmd/newt
+./bin/newt doctor
 ```
 
 ## 结构

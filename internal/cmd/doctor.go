@@ -16,7 +16,7 @@ var doctorCmd = &cobra.Command{
 	Use:   "doctor",
 	Short: "检查登录、网络与 OAuth 端点健康状况",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("owl doctor")
+		fmt.Println("newt doctor")
 		fmt.Println("----------")
 
 		meta := auth.SessionMeta()
@@ -31,7 +31,7 @@ var doctorCmd = &cobra.Command{
 			server = f.Active().ServerURL
 		}
 		if server == "" {
-			fmt.Println("server:   (未配置) 请 owl login --server <url>")
+			fmt.Println("server:   (未配置) 请 newt login --server <url>")
 			os.Exit(1)
 		}
 		fmt.Printf("server:   %s\n", server)

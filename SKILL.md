@@ -8,25 +8,25 @@ description: Operate NewtSpeak via CLI and MCP — multi-profile OAuth, guild ad
 ## 安装与多 profile 登录
 
 ```bash
-cd Newt-Agent && go install ./cmd/owl
+cd Newt-Agent && go install ./cmd/newt
 
 # 设备码（默认）：打开 Desktop/Web 或 newtspeak:// 深链
-owl login --server https://a.example --profile home
+newt login --server https://a.example --profile home
 
 # PKCE：本机 loopback 回调（适合有浏览器环境）
-owl login --server https://a.example --method pkce --client-origin https://app.example
+newt login --server https://a.example --method pkce --client-origin https://app.example
 
-owl login --server https://b.example --profile work --platform
-owl profile list && owl profile use work && owl whoami
+newt login --server https://b.example --profile work --platform
+newt profile list && newt profile use work && newt whoami
 ```
 
-Token 优先 OS keyring；`OWL_AGENT_NO_KEYRING=1` 强制文件。  
+Token 优先 OS keyring；`NEWT_AGENT_NO_KEYRING=1` 强制文件。  
 用户可在 Desktop **设置 → 已授权应用** 中吊销会话。
 
 ## MCP
 
 ```bash
-owl mcp serve
+newt mcp serve
 ```
 
 示例配置见 `examples/mcp.json`。
@@ -39,13 +39,13 @@ owl mcp serve
 
 危险工具必须 `confirm: true`。
 
-排障：`owl doctor`（检查 healthz / OAuth / whoami / gapi）。
+排障：`newt doctor`（检查 healthz / OAuth / whoami / gapi）。
 
 ## 命令域
 
 | 域 | 示例 |
 |----|------|
-| profile | `owl profile use/list/show/delete` |
+| profile | `newt profile use/list/show/delete` |
 | guilds/channels/roles/members | 服管 |
 | messages | 含高级 search |
 | restrictions/audit/voice | 治理 |
@@ -54,7 +54,7 @@ owl mcp serve
 | platform | 需 `--platform` 登录 |
 | tools / mcp | 统一入口 |
 
-`owl tools list` 查看全部。
+`newt tools list` 查看全部。
 
 ## 安全
 

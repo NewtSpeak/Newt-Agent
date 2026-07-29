@@ -28,7 +28,7 @@ func makeClient() (*api.Client, error) {
 	}
 	server := f.Active().ServerURL
 	if server == "" {
-		return nil, fmt.Errorf("未配置服务器，请先 owl login --server <url>")
+		return nil, fmt.Errorf("未配置服务器，请先 newt login --server <url>")
 	}
 	token, err := auth.EnsureAccess(func(serverURL, refresh string) (string, string, time.Time, string, error) {
 		cl := api.New(serverURL)

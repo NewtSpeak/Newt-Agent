@@ -3,14 +3,14 @@
 NewtSpeak **官方 Agent CLI**：以 **用户 OAuth 委托** 管理社区，并作为 **MCP / Skill** 入口供 AI 宿主调用。
 
 ```text
-owl login (设备码 / PKCE)
+newt login (设备码 / PKCE)
         │
         ▼
   access token（keyring）
         │
    ┌────┴────┐
    ▼         ▼
- owl 命令   owl mcp serve  ──► AI（Cursor / Claude Desktop …）
+ owl 命令   newt mcp serve  ──► AI（Cursor / Claude Desktop …）
    │         │
    └────┬────┘
         ▼
@@ -25,7 +25,7 @@ owl login (设备码 / PKCE)
 
 | 能力 | 说明 |
 |------|------|
-| **多 Profile** | 多 Server / 多账号隔离（`owl profile`） |
+| **多 Profile** | 多 Server / 多账号隔离（`newt profile`） |
 | **服管** | 服务器、频道、角色、成员、邀请、消息 |
 | **治理** | Restriction、审计、语音踢人/静音/节点池 |
 | **社交** | 好友、隐私、通知、私信 |
@@ -40,12 +40,12 @@ owl login (设备码 / PKCE)
 
 ```text
 Newt-Agent/
-├── cmd/owl/              # 入口
+├── cmd/newt/              # 入口
 ├── internal/
 │   ├── api/              # OAuth + gapi/api HTTP 客户端
 │   ├── auth/             # keyring / 会话
 │   ├── cmd/              # cobra 子命令
-│   ├── config/           # ~/.config/owl-agent
+│   ├── config/           # ~/.config/newt-agent
 │   ├── mcp/              # MCP server
 │   └── tools/            # 工具注册与实现（CLI/MCP 共用）
 ├── skills/               # 专项 Skill
@@ -59,13 +59,13 @@ Newt-Agent/
 
 ```bash
 cd Newt-Agent
-make build          # → bin/owl
+make build          # → bin/newt
 make test
-make install        # go install ./cmd/owl
+make install        # go install ./cmd/newt
 
 # 或
-go build -o owl ./cmd/owl
-./owl doctor
+go build -o newt ./cmd/newt
+./newt doctor
 ```
 
 发布：打 `v*` tag，CI 交叉编译并上传 GitHub Release。
@@ -74,26 +74,26 @@ go build -o owl ./cmd/owl
 
 ```bash
 # 设备码（默认）+ 深链
-owl login --server https://newt-panel.example.com
+newt login --server https://newt-panel.example.com
 
 # PKCE
-owl login --server https://newt-panel.example.com \
+newt login --server https://newt-panel.example.com \
   --method pkce --client-origin https://newt-panel.example.com
 
 # 平台管理 scope
-owl login --server https://… --platform
+newt login --server https://… --platform
 
 # 多 profile
-owl login --server https://a.example --profile home
-owl profile use home
-owl whoami
+newt login --server https://a.example --profile home
+newt profile use home
+newt whoami
 
 # 日常
-owl guilds list
-owl channels list --guild <id>
+newt guilds list
+newt channels list --guild <id>
 owl messages send --channel <id> --content "hi"
-owl tools list
-owl tools call guilds.list --args '{}'
+newt tools list
+newt tools call guilds.list --args '{}'
 ```
 
 危险操作：`--yes` 或 tool 参数 `confirm: true`。
@@ -101,14 +101,14 @@ owl tools call guilds.list --args '{}'
 ### MCP
 
 ```bash
-owl mcp serve
+newt mcp serve
 ```
 
 宿主配置示例：[`examples/mcp.json`](examples/mcp.json)
 
 | 类型 | 内容 |
 |------|------|
-| tools | 与 `owl tools list` 同源 |
+| tools | 与 `newt tools list` 同源 |
 | resources | `newtspeak://status` · `tools` · `whoami` · `guilds` |
 | prompts | `moderate-guild` · `audit-review` · `safe-ops` |
 
@@ -137,7 +137,7 @@ owl mcp serve
 ## 安全
 
 1. 勿向 AI 提供密码或 refresh token  
-2. Token 默认 OS keyring（`OWL_AGENT_NO_KEYRING=1` 可改文件）  
+2. Token 默认 OS keyring（`NEWT_AGENT_NO_KEYRING=1` 可改文件）  
 3. 危险 tool 必须确认  
 4. 权限完全受服内 RBAC + OAuth scope 约束  
 5. 可在 Desktop **设置 → 已授权应用** 吊销  

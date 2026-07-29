@@ -45,7 +45,7 @@ var loginCmd = &cobra.Command{
 			}
 		}
 		if loginServer == "" {
-			fatal(fmt.Errorf("请指定 --server https://你的-owl-server"))
+			fatal(fmt.Errorf("请指定 --server https://你的-newt-server"))
 		}
 		server := config.NormalizeServerURL(loginServer)
 		scope := "openid profile gapi.full offline_access"
@@ -111,7 +111,7 @@ func loginDevice(server, scope string) {
 				case "access_denied":
 					fatal(fmt.Errorf("用户拒绝了授权"))
 				case "expired_token":
-					fatal(fmt.Errorf("设备码已过期，请重新 owl login"))
+					fatal(fmt.Errorf("设备码已过期，请重新 newt login"))
 				}
 			}
 			fatal(err)

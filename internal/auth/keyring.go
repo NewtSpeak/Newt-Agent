@@ -8,11 +8,11 @@ import (
 	"github.com/zalando/go-keyring"
 )
 
-const keyringService = "owl-agent"
+const keyringService = "newt-agent"
 
 // keyring 不可用或失败时回退到配置文件（仍 0600）。
-var keyringDisabled = strings.EqualFold(os.Getenv("OWL_AGENT_NO_KEYRING"), "1") ||
-	strings.EqualFold(os.Getenv("OWL_AGENT_NO_KEYRING"), "true")
+var keyringDisabled = strings.EqualFold(os.Getenv("NEWT_AGENT_NO_KEYRING"), "1") ||
+	strings.EqualFold(os.Getenv("NEWT_AGENT_NO_KEYRING"), "true")
 
 func keyringAccount(profile string) string {
 	if profile == "" {

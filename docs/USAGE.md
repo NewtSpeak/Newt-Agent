@@ -11,7 +11,7 @@
 | 身份 | OAuth 用户 | 机器人 |
 | 凭证 | access/refresh（keyring） | `newtbot_…` |
 | API | `/gapi/v1`、可选 `/api/v1` | `/bot-api/v1` |
-| 入口 | `owl` 命令 / MCP / Skill | 各语言库 |
+| 入口 | `newt` 命令 / MCP / Skill | 各语言库 |
 
 **密码不进 CLI**：设备码或 PKCE 在 Desktop/Web 授权页完成。
 
@@ -20,25 +20,25 @@
 ```bash
 # 源码
 cd Newt-Agent
-make build          # → bin/owl
-make install        # go install ./cmd/owl
+make build          # → bin/newt
+make install        # go install ./cmd/newt
 
 # 或
-go build -o owl ./cmd/owl
+go build -o newt ./cmd/newt
 ```
 
-Release：各平台 `owl` 二进制（版本见 Makefile，当前约 `0.4.x`）。
+Release：各平台 `newt` 二进制（版本见 Makefile，当前约 `0.4.x`）。
 
 ```bash
-owl doctor          # healthz / OAuth / whoami / gapi
+newt doctor          # healthz / OAuth / whoami / gapi
 owl version
 ```
 
 Shell 补全：
 
 ```bash
-owl completion bash > /etc/bash_completion.d/owl
-owl completion powershell | Out-String | Invoke-Expression
+newt completion bash > /etc/bash_completion.d/owl
+newt completion powershell | Out-String | Invoke-Expression
 ```
 
 ## 2. 登录
@@ -46,14 +46,14 @@ owl completion powershell | Out-String | Invoke-Expression
 ### 设备码（默认）
 
 ```bash
-owl login --server https://newt-panel.example.com
+newt login --server https://newt-panel.example.com
 # 打印 user_code + 打开浏览器 / newtspeak://oauth/device
 ```
 
 ### PKCE（本机 loopback）
 
 ```bash
-owl login --server https://newt-panel.example.com \
+newt login --server https://newt-panel.example.com \
   --method pkce \
   --client-origin https://newt-panel.example.com
 ```
@@ -61,40 +61,40 @@ owl login --server https://newt-panel.example.com \
 ### 平台管理 scope
 
 ```bash
-owl login --server https://… --platform
+newt login --server https://… --platform
 # scope 追加 platform.read platform.admin（需 system_admin）
 ```
 
 ### 多 Profile
 
 ```bash
-owl login --server https://a.example --profile home
-owl login --server https://b.example --profile work
-owl profile list
-owl profile use work
-owl profile show
-owl whoami
-owl logout
+newt login --server https://a.example --profile home
+newt login --server https://b.example --profile work
+newt profile list
+newt profile use work
+newt profile show
+newt whoami
+newt logout
 ```
 
 | 项 | 说明 |
 |----|------|
-| 配置目录 | `~/.config/owl-agent/`（Windows: `%AppData%\owl-agent\`） |
-| Token | 优先 OS keyring；`OWL_AGENT_NO_KEYRING=1` 强制文件 |
+| 配置目录 | `~/.config/newt-agent/`（Windows: `%AppData%\newt-agent\`） |
+| Token | 优先 OS keyring；`NEWT_AGENT_NO_KEYRING=1` 强制文件 |
 | 吊销 | Desktop **设置 → 已授权应用** |
 
 ## 3. 日常命令速览
 
 ```bash
 # 服务器
-owl guilds list
-owl guilds get <gid>
-owl guilds create --name "测试服"
-owl guilds permissions <gid>
+newt guilds list
+newt guilds get <gid>
+newt guilds create --name "测试服"
+newt guilds permissions <gid>
 
 # 频道
-owl channels list --guild <gid>
-owl channels create --guild <gid> --name general --type TEXT
+newt channels list --guild <gid>
+newt channels create --guild <gid> --name general --type TEXT
 
 # 角色 / 成员
 owl roles list --guild <gid>
@@ -131,18 +131,18 @@ owl platform sfu nodes
 CLI 与 MCP **共用同一套 tools**：
 
 ```bash
-owl tools list                          # JSON：name / description / destructive
-owl tools call guilds.list --args '{}'
-owl tools call messages.send --args '{"channel_id":"…","content":"hi"}'
-owl tools call members.kick --args '{"guild_id":"…","user_id":"…","confirm":true}'
+newt tools list                          # JSON：name / description / destructive
+newt tools call guilds.list --args '{}'
+newt tools call messages.send --args '{"channel_id":"…","content":"hi"}'
+newt tools call members.kick --args '{"guild_id":"…","user_id":"…","confirm":true}'
 # 或
-owl tools call members.kick --yes --args '{"guild_id":"…","user_id":"…"}'
+newt tools call members.kick --yes --args '{"guild_id":"…","user_id":"…"}'
 ```
 
 ## 5. MCP（给 AI 宿主）
 
 ```bash
-owl mcp serve          # stdio JSON-RPC 2.0
+newt mcp serve          # stdio JSON-RPC 2.0
 ```
 
 **Cursor / Claude Desktop 示例**（`examples/mcp.json`）：
@@ -161,7 +161,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 
 | 能力 | 内容 |
 |------|------|
-| **tools** | 80+（与 `owl tools list` 同源） |
+| **tools** | 80+（与 `newt tools list` 同源） |
 | **resources** | `newtspeak://status` `tools` `whoami` `guilds` |
 | **prompts** | `moderate-guild` / `audit-review` / `safe-ops` |
 
@@ -172,7 +172,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 - 根目录 `Newt-Agent/SKILL.md`：总 skill  
 - `skills/newtspeak-guild-admin/SKILL.md`：服管专项  
 
-AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止索要密码或 refresh token**。
+AI Agent 加载 skill 后，优先通过 MCP/`newt tools call` 操作，**禁止索要密码或 refresh token**。
 
 ## 7. 配置与环境
 
@@ -180,7 +180,7 @@ AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止�
 |-----------|------|
 | `--server` | Newt-Server 公网根（无尾斜杠） |
 | `--profile` | 多账号隔离 |
-| `OWL_AGENT_NO_KEYRING=1` | token 写入 config 文件 |
+| `NEWT_AGENT_NO_KEYRING=1` | token 写入 config 文件 |
 | config.json | `server_url` / `scope` / `client_id` 等 |
 
 默认 OAuth scope：`openid profile gapi.full offline_access`。
@@ -188,17 +188,17 @@ AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止�
 ## 8. 排障
 
 ```bash
-owl doctor
-owl status
-owl whoami
+newt doctor
+newt status
+newt whoami
 ```
 
 | 现象 | 处理 |
 |------|------|
-| 未登录 | `owl login --server …` |
+| 未登录 | `newt login --server …` |
 | 403 权限 | 账号在服内 RBAC 不足 |
 | platform.* 失败 | 用 `--platform` 重登 + system_admin |
-| MCP 无 tools | 确认 `owl` 在 PATH；先 CLI 登录同一 profile |
+| MCP 无 tools | 确认 `newt` 在 PATH；先 CLI 登录同一 profile |
 | 设备码超时 | 重新 `login`；检查 Desktop 深链 |
 
 ## 9. 相关文档

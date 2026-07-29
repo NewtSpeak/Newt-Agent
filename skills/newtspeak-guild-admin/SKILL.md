@@ -5,17 +5,17 @@ description: Full NewtSpeak guild administration via owl CLI/MCP — channels, r
 
 # NewtSpeak 服务器管理
 
-依赖 `owl login` 与根 skill `newtspeak-agent`。
+依赖 `newt login` 与根 skill `newtspeak-agent`。
 
 ## 频道
 
 ```bash
-owl channels list --guild <gid>
-owl channels create --guild <gid> --name welcome --type TEXT
-owl channels update --channel <cid> --topic "欢迎"
-owl channels delete --channel <cid> --yes
-owl channels overwrites list --guild <gid> --channel <cid>
-owl channels overwrites set --channel <cid> --target <role_id> --type ROLE --allow 0 --deny 0
+newt channels list --guild <gid>
+newt channels create --guild <gid> --name welcome --type TEXT
+newt channels update --channel <cid> --topic "欢迎"
+newt channels delete --channel <cid> --yes
+newt channels overwrites list --guild <gid> --channel <cid>
+newt channels overwrites set --channel <cid> --target <role_id> --type ROLE --allow 0 --deny 0
 ```
 
 ## 角色与成员

@@ -27,7 +27,7 @@ func Dir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	dir := filepath.Join(home, "owl-agent")
+	dir := filepath.Join(home, "newt-agent")
 	if err := os.MkdirAll(dir, 0o700); err != nil {
 		return "", err
 	}

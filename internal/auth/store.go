@@ -138,7 +138,7 @@ func EnsureAccess(refreshFn func(server, refresh string) (access, newRefresh str
 		t = loaded
 	}
 	if t == nil || t.RefreshToken == "" {
-		return "", fmt.Errorf("未登录：请先运行 owl login --server <url>")
+		return "", fmt.Errorf("未登录：请先运行 newt login --server <url>")
 	}
 	if t.AccessToken != "" && time.Now().Before(t.AccessExpiresAt.Add(-30*time.Second)) {
 		return t.AccessToken, nil
@@ -176,7 +176,7 @@ func DebugPath() string {
 
 func WriteHint() string {
 	home, _ := os.UserConfigDir()
-	return strings.TrimSpace(home) + "/owl-agent/config.json"
+	return strings.TrimSpace(home) + "/newt-agent/config.json"
 }
 
 // SessionMeta 供 status tool 展示。

@@ -8,22 +8,22 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "owl",
+	Use:   "newt",
 	Short: "NewtSpeak CLI — OAuth 用户委托 + AI skill / MCP 工具",
-	Long: `owl 是 NewtSpeak 官方 Agent CLI。
+	Long: `newt 是 NewtSpeak 官方 Agent CLI。
 
 登录后可管理服务器、频道、角色、成员与消息，并作为 AI skill / MCP 工具入口。
 密码不会进入本工具：使用设备码或 PKCE 在 Desktop / Web 授权页完成登录。
 
-  owl login --server https://...
-  owl login --method pkce --client-origin https://web...
-  owl doctor
-  owl channels list --guild <id>
-  owl mcp serve
+  newt login --server https://...
+  newt login --method pkce --client-origin https://web...
+  newt doctor
+  newt channels list --guild <id>
+  newt mcp serve
 
 Shell 补全：
-  owl completion bash > /etc/bash_completion.d/owl
-  owl completion powershell | Out-String | Invoke-Expression`,
+  newt completion bash > /etc/bash_completion.d/owl
+  newt completion powershell | Out-String | Invoke-Expression`,
 	Version: Version,
 }
 

@@ -29,13 +29,13 @@ var mcpServeCmd = &cobra.Command{
     }
   }
 
-使用前请先完成: owl login --server <url>
+使用前请先完成: newt login --server <url>
 危险写操作需在 arguments 中传 confirm: true。`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// 预检登录，失败时明确写到 stderr（stdout 留给 JSON-RPC）
 		if _, err := makeClient(); err != nil {
-			fmt.Fprintln(os.Stderr, "owl mcp serve: 未登录或会话无效:", err)
-			fmt.Fprintln(os.Stderr, "请先运行: owl login --server <url>")
+			fmt.Fprintln(os.Stderr, "newt mcp serve: 未登录或会话无效:", err)
+			fmt.Fprintln(os.Stderr, "请先运行: newt login --server <url>")
 			// 仍启动 server：部分客户端先 initialize 再 tools；调用时再报错
 		}
 		s := &mcp.Server{Reg: toolRegistry()}

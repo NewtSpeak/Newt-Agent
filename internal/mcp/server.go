@@ -16,7 +16,7 @@ import (
 )
 
 const protocolVersion = "2024-11-05"
-const serverName = "owl-agent"
+const serverName = "newt-agent"
 const serverVersion = "0.4.0"
 
 type Server struct {
@@ -198,7 +198,7 @@ func listResources() []map[string]any {
 		{
 			"uri":         "newtspeak://status",
 			"name":        "session-status",
-			"description": "当前 owl profile 登录状态与 token 存储后端",
+			"description": "当前 newt profile 登录状态与 token 存储后端",
 			"mimeType":    "application/json",
 		},
 		{

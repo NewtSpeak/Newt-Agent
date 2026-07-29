@@ -33,7 +33,7 @@ jobs:
             local name="owl_${VER}_${goos}_${goarch}${ext}"
             GOOS=$goos GOARCH=$goarch go build \
               -ldflags "-s -w -X github.com/NewtSpeak/Newt-Agent/internal/cmd.Version=${VER} -X github.com/NewtSpeak/Newt-Agent/internal/cmd.Commit=${GITHUB_SHA::7} -X github.com/NewtSpeak/Newt-Agent/internal/cmd.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-              -o "dist/${name}" ./cmd/owl
+              -o "dist/${name}" ./cmd/newt
             (cd dist && sha256sum "${name}" >> checksums.txt)
           }
           build linux amd64 ""

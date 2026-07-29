@@ -4,8 +4,8 @@
 
 ```text
 owl <命令>  ──┐
-owl tools call ─┼──► tools.Registry ──► /gapi/v1 或 /api/v1
-owl mcp serve  ─┘         │
+newt tools call ─┼──► tools.Registry ──► /gapi/v1 或 /api/v1
+newt mcp serve  ─┘         │
                           └── Bearer <access_token>
 ```
 
@@ -35,25 +35,25 @@ Agent 内部：`Client.Gapi(method, path, body, query)` / `Client.Api(...)`。
 
 ## CLI 命令树
 
-全局：`--yes` 跳过危险确认 · `owl completion <shell>`
+全局：`--yes` 跳过危险确认 · `newt completion <shell>`
 
 ### 会话
 
 | 命令 | 说明 |
 |------|------|
-| `owl login --server URL [--method device\|pkce] [--platform] [--profile P] [--no-open]` | 登录 |
-| `owl logout` | 登出 |
-| `owl whoami` | 当前用户 |
-| `owl status` | 本地配置与 token 后端 |
-| `owl doctor` | 连通性诊断 |
-| `owl profile list\|use\|show\|delete` | 多 profile |
+| `newt login --server URL [--method device\|pkce] [--platform] [--profile P] [--no-open]` | 登录 |
+| `newt logout` | 登出 |
+| `newt whoami` | 当前用户 |
+| `newt status` | 本地配置与 token 后端 |
+| `newt doctor` | 连通性诊断 |
+| `newt profile list\|use\|show\|delete` | 多 profile |
 
 ### 服管
 
 | 命令 | 对应 tool |
 |------|-----------|
-| `owl guilds list\|get\|create\|update\|delete\|permissions` | `guilds.*` |
-| `owl channels list\|create\|update\|delete\|…` | `channels.*` |
+| `newt guilds list\|get\|create\|update\|delete\|permissions` | `guilds.*` |
+| `newt channels list\|create\|update\|delete\|…` | `channels.*` |
 | `owl roles list\|create\|…` | `roles.*` |
 | `owl members list\|kick\|ban\|…` | `members.*` |
 | `owl invites create\|…` | `invites.*` |
@@ -79,16 +79,16 @@ Agent 内部：`Client.Gapi(method, path, body, query)` / `Client.Api(...)`。
 
 | 命令 | 说明 |
 |------|------|
-| `owl tools list` | 列出全部 tools（JSON） |
-| `owl tools call <name> --args '{…}' [--yes]` | 直接调 tool |
-| `owl mcp serve` | MCP stdio 服务 |
+| `newt tools list` | 列出全部 tools（JSON） |
+| `newt tools call <name> --args '{…}' [--yes]` | 直接调 tool |
+| `newt mcp serve` | MCP stdio 服务 |
 
 示例：
 
 ```bash
-owl channels list --guild 018f…
+newt channels list --guild 018f…
 owl messages send --channel 018f… --content "hello"
-owl tools call roles.assign --args '{
+newt tools call roles.assign --args '{
   "guild_id":"…","user_id":"…","role_id":"…"
 }'
 owl members ban --guild … --user … --yes
@@ -209,14 +209,14 @@ Restriction `scope`：`TEXT_CHANNEL` / `VOICE_CHANNEL` / `GUILD_ALL_TEXT` / `GUI
 | `platform.sfu.nodes` / `topology` | SFU | |
 | `platform.audit.list` | 全站审计 | |
 
-完整 schema：`owl tools list` 或读 `Newt-Agent/internal/tools/handlers*.go` 的 `InputSchema`。
+完整 schema：`newt tools list` 或读 `Newt-Agent/internal/tools/handlers*.go` 的 `InputSchema`。
 
 ---
 
 ## tools.call 约定
 
 ```bash
-owl tools call <name> --args '<JSON object>'
+newt tools call <name> --args '<JSON object>'
 ```
 
 ```json
@@ -242,7 +242,7 @@ MCP 侧等价：`tools/call`，arguments 同 schema；destructive 同样要 `con
 ```text
 传输: stdio，每行一条 JSON-RPC 2.0
 协议: 2024-11-05
-server: owl-agent
+server: newt-agent
 ```
 
 | 方法 | 作用 |
@@ -302,7 +302,7 @@ curl -sH "Authorization: Bearer $TOKEN" \
 | HTTP 4xx/5xx | `CODE: message`（解析 `error.code`） |
 | 未知 tool | 列出可用 name |
 | 缺 confirm | `危险操作 xxx 需要 confirm=true` |
-| 未登录 | factory 取 session 失败 → 先 `owl login` |
+| 未登录 | factory 取 session 失败 → 先 `newt login` |
 
 ---
 
@@ -312,4 +312,4 @@ curl -sH "Authorization: Bearer $TOKEN" \
 2. destructive 必须二次确认  
 3. 权限完全受服内 RBAC + OAuth scope 约束  
 4. 平台工具仅 system_admin  
-5. 吊销：Desktop 已授权应用，或 `owl logout` + `/oauth/v1/revoke`
+5. 吊销：Desktop 已授权应用，或 `newt logout` + `/oauth/v1/revoke`

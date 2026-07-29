@@ -14,11 +14,11 @@ var profileCmd = &cobra.Command{
 	Short: "多账号 / 多服务器 profile 管理",
 	Long: `每个 profile 独立保存 server_url、scope 与 refresh token（keyring 分区）。
 
-  owl profile list
-  owl profile use work
-  owl login --server https://a.example --profile work
-  owl profile show
-  owl profile delete old`,
+  newt profile list
+  newt profile use work
+  newt login --server https://a.example --profile work
+  newt profile show
+  newt profile delete old`,
 }
 
 var profileListCmd = &cobra.Command{
@@ -77,7 +77,7 @@ var profileUseCmd = &cobra.Command{
 		if p.ServerURL != "" {
 			fmt.Println("server:", p.ServerURL)
 		} else {
-			fmt.Println("提示: 该 profile 尚未 login，请运行 owl login --server ...")
+			fmt.Println("提示: 该 profile 尚未 login，请运行 newt login --server ...")
 		}
 	},
 }

@@ -11,14 +11,14 @@
 
 ## 桌面端实现
 
-1. **tauri-plugin-deep-link**：注册 `owlspeak` scheme（`tauri.conf.json` → plugins.deep-link）。
+1. **tauri-plugin-deep-link**：注册 `newtspeak` scheme（`tauri.conf.json` → plugins.deep-link）。
 2. **tauri-plugin-single-instance**：应用已运行时，二次启动/深链把 argv 中的 URL 经事件 `owl://deep-link` 发给已有窗口并 `set_focus`。
 3. **前端** `useDeepLinkNavigation`：同时订阅 `onOpenUrl` 与 `owl://deep-link`。
 
 ## CLI
 
 ```bash
-owl login --server https://api.example
+newt login --server https://api.example
 # 会尝试打开浏览器 + newtspeak://oauth/device?...
 ```
 

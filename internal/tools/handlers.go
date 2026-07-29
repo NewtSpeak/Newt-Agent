@@ -16,7 +16,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "whoami", Description: "当前 OAuth 用户信息",
 		InputSchema: schemaObject(map[string]any{}),
-		CLIHint:     "owl whoami",
+		CLIHint:     "newt whoami",
 		run: func(c *api.Client, _ map[string]any) (any, error) {
 			return c.UserInfo()
 		},
@@ -24,7 +24,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "status", Description: "CLI 登录状态与配置（含 token 存储后端）",
 		InputSchema: schemaObject(map[string]any{}),
-		CLIHint:     "owl status",
+		CLIHint:     "newt status",
 		run: func(_ *api.Client, _ map[string]any) (any, error) {
 			return auth.SessionMeta(), nil
 		},
@@ -34,7 +34,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "guilds.list", Description: "列出当前用户加入的服务器",
 		InputSchema: schemaObject(map[string]any{}),
-		CLIHint:     "owl guilds list",
+		CLIHint:     "newt guilds list",
 		run: func(c *api.Client, _ map[string]any) (any, error) {
 			return c.Gapi(http.MethodGet, "/users/@me/guilds", nil, nil)
 		},
@@ -42,7 +42,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "guilds.get", Description: "获取服务器详情",
 		InputSchema: schemaObject(map[string]any{"guild_id": propString("服务器 ID")}, "guild_id"),
-		CLIHint:     "owl guilds get <guild_id>",
+		CLIHint:     "newt guilds get <guild_id>",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "guild_id")
 			if err != nil {
@@ -54,7 +54,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "guilds.create", Description: "创建服务器",
 		InputSchema: schemaObject(map[string]any{"name": propString("服务器名称 2-100 字符")}, "name"),
-		CLIHint:     "owl guilds create --name ...",
+		CLIHint:     "newt guilds create --name ...",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "name")
 			if err != nil {
@@ -73,7 +73,7 @@ func (r *Registry) registerAll() {
 			"restriction_badge_visible":  propBool("是否显示受限徽章"),
 			"restriction_reason_required": propBool("Restriction 是否强制 reason"),
 		}, "guild_id"),
-		CLIHint: "owl guilds update --guild ... --name ...",
+		CLIHint: "newt guilds update --guild ... --name ...",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "guild_id")
 			if err != nil {
@@ -91,7 +91,7 @@ func (r *Registry) registerAll() {
 			"confirm_name": propString("必须与当前服务器名称完全一致"),
 			"confirm":      propBool("必须为 true"),
 		}, "guild_id", "confirm_name", "confirm"),
-		CLIHint: "owl guilds delete --guild ... --confirm-name ... --yes",
+		CLIHint: "newt guilds delete --guild ... --confirm-name ... --yes",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "guild_id", "confirm_name")
 			if err != nil {
@@ -136,7 +136,7 @@ func (r *Registry) registerAll() {
 	r.add(&Def{
 		Name: "channels.list", Description: "列出服务器可见频道",
 		InputSchema: schemaObject(map[string]any{"guild_id": propString("服务器 ID")}, "guild_id"),
-		CLIHint:     "owl channels list --guild ...",
+		CLIHint:     "newt channels list --guild ...",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "guild_id")
 			if err != nil {
@@ -158,7 +158,7 @@ func (r *Registry) registerAll() {
 			"password":   propString("访问密码（上锁）"),
 			"user_limit": propInteger("语音人数上限"),
 		}, "guild_id", "name", "type"),
-		CLIHint: "owl channels create --guild ... --name ... --type TEXT",
+		CLIHint: "newt channels create --guild ... --name ... --type TEXT",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "guild_id", "name", "type")
 			if err != nil {
@@ -182,7 +182,7 @@ func (r *Registry) registerAll() {
 			"voice_note": propString("语音活动注释"),
 			"user_limit": propInteger("语音上限"),
 		}, "channel_id"),
-		CLIHint: "owl channels update --channel ... --name ...",
+		CLIHint: "newt channels update --channel ... --name ...",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "channel_id")
 			if err != nil {
@@ -199,7 +199,7 @@ func (r *Registry) registerAll() {
 			"channel_id": propString("频道 ID"),
 			"confirm":    propBool("必须为 true"),
 		}, "channel_id", "confirm"),
-		CLIHint: "owl channels delete --channel ... --yes",
+		CLIHint: "newt channels delete --channel ... --yes",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "channel_id")
 			if err != nil {
@@ -272,7 +272,7 @@ func (r *Registry) registerAll() {
 			"allow":      propNumber("允许位掩码"),
 			"deny":       propNumber("拒绝位掩码"),
 		}, "channel_id", "target_id", "type"),
-		CLIHint: "owl channels overwrites set --channel ... --target ... --type ROLE --allow 0 --deny 0",
+		CLIHint: "newt channels overwrites set --channel ... --target ... --type ROLE --allow 0 --deny 0",
 		run: func(c *api.Client, args map[string]any) (any, error) {
 			req, err := requireStr(args, "channel_id", "target_id", "type")
 			if err != nil {
