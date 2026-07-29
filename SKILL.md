@@ -1,14 +1,14 @@
 ---
 name: owlspeak-agent
-description: Operate OwlSpeak via CLI and MCP — multi-profile OAuth, guild admin, stickers, social, voice, audit, platform; MCP tools/resources/prompts.
+description: Operate NewtSpeak via CLI and MCP — multi-profile OAuth, guild admin, stickers, social, voice, audit, platform; MCP tools/resources/prompts.
 ---
 
-# OwlSpeak Agent Skill
+# NewtSpeak Agent Skill
 
 ## 安装与多 profile 登录
 
 ```bash
-cd Owl-Agent && go install ./cmd/owl
+cd Newt-Agent && go install ./cmd/owl
 
 # 设备码（默认）：打开 Desktop/Web 或 owlspeak:// 深链
 owl login --server https://a.example --profile home

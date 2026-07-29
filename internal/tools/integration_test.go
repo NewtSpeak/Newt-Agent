@@ -5,12 +5,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
-	"github.com/OwlSpeak/Owl-Agent/internal/tools"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/tools"
 	"github.com/gin-gonic/gin"
 )
 
-// TestToolsAgainstMockServer 不依赖真实 Owl-Server：用本地 mock 验证工具 HTTP 路径与解析。
+// TestToolsAgainstMockServer 不依赖真实 Newt-Server：用本地 mock 验证工具 HTTP 路径与解析。
 func TestToolsAgainstMockServer(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	r := gin.New()

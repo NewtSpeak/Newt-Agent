@@ -1,9 +1,9 @@
 ---
 name: owlspeak-guild-admin
-description: Full OwlSpeak guild administration via owl CLI/MCP — channels, roles, members, invites, messages.
+description: Full NewtSpeak guild administration via owl CLI/MCP — channels, roles, members, invites, messages.
 ---
 
-# OwlSpeak 服务器管理
+# NewtSpeak 服务器管理
 
 依赖 `owl login` 与根 skill `owlspeak-agent`。
 

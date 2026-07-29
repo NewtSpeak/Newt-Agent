@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/cmd"
+	"github.com/NewtSpeak/Newt-Agent/internal/cmd"
 )
 
 func main() {

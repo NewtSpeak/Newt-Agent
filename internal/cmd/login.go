@@ -7,9 +7,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
-	"github.com/OwlSpeak/Owl-Agent/internal/auth"
-	"github.com/OwlSpeak/Owl-Agent/internal/config"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/auth"
+	"github.com/NewtSpeak/Newt-Agent/internal/config"
 	"github.com/spf13/cobra"
 )
 
@@ -79,7 +79,7 @@ func loginDevice(server, scope string) {
 	}
 
 	fmt.Println()
-	fmt.Println("请在 OwlSpeak 客户端或浏览器完成授权：")
+	fmt.Println("请在 NewtSpeak 客户端或浏览器完成授权：")
 	fmt.Println()
 	fmt.Println("  设备码:", dc.UserCode)
 	fmt.Println("  打开:  ", dc.VerificationURIComplete)
@@ -204,7 +204,7 @@ func finishLogin(server string, tr *api.TokenResponse) {
 }
 
 func init() {
-	loginCmd.Flags().StringVar(&loginServer, "server", "", "Owl-Server 基址")
+	loginCmd.Flags().StringVar(&loginServer, "server", "", "Newt-Server 基址")
 	loginCmd.Flags().BoolVar(&loginPlatform, "platform", false, "申请平台 scope")
 	loginCmd.Flags().BoolVar(&loginNoOpen, "no-open", false, "不自动打开浏览器")
 	loginCmd.Flags().StringVar(&loginProfile, "profile", "", "写入指定 profile")

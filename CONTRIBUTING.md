@@ -29,6 +29,6 @@ git tag v0.4.1
 git push origin v0.4.1
 ```
 
-## 与 OwlSpeak 工作区
+## 与 NewtSpeak 工作区
 
-本目录可独立 git 仓库，也可作为 monorepo 子树。独立发布时仅需 Go 1.22+ 与 Owl-Server OAuth 端点。
+本目录可独立 git 仓库，也可作为 monorepo 子树。独立发布时仅需 Go 1.22+ 与 Newt-Server OAuth 端点。

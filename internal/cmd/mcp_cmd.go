@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/mcp"
+	"github.com/NewtSpeak/Newt-Agent/internal/mcp"
 	"github.com/spf13/cobra"
 )
 

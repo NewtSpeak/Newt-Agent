@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
 )
 
 func (r *Registry) registerSocialAndStickers() {

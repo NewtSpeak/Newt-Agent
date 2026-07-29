@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// 构建时可用 -ldflags "-X github.com/OwlSpeak/Owl-Agent/internal/cmd.Version=..." 覆盖。
+// 构建时可用 -ldflags "-X github.com/NewtSpeak/Newt-Agent/internal/cmd.Version=..." 覆盖。
 var (
 	Version   = "0.4.1"
 	Commit    = "dev"

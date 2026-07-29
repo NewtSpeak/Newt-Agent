@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
-	"github.com/OwlSpeak/Owl-Agent/internal/tools"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/tools"
 )
 
 func TestMCPInitializeResourcesPrompts(t *testing.T) {

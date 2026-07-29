@@ -1,4 +1,4 @@
-# Owl-Agent 接口与调用文档
+# Newt-Agent 接口与调用文档
 
 三层入口同一工具注册表：
 
@@ -209,7 +209,7 @@ Restriction `scope`：`TEXT_CHANNEL` / `VOICE_CHANNEL` / `GUILD_ALL_TEXT` / `GUI
 | `platform.sfu.nodes` / `topology` | SFU | |
 | `platform.audit.list` | 全站审计 | |
 
-完整 schema：`owl tools list` 或读 `Owl-Agent/internal/tools/handlers*.go` 的 `InputSchema`。
+完整 schema：`owl tools list` 或读 `Newt-Agent/internal/tools/handlers*.go` 的 `InputSchema`。
 
 ---
 
@@ -263,7 +263,7 @@ server: owl-agent
 
 **Prompts**：`moderate-guild` · `audit-review` · `safe-ops`
 
-配置样例：`Owl-Agent/examples/mcp.json`、`examples/claude_desktop_mcp.json`。
+配置样例：`Newt-Agent/examples/mcp.json`、`examples/claude_desktop_mcp.json`。
 
 ---
 

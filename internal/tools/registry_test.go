@@ -3,7 +3,7 @@ package tools
 import (
 	"testing"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
 )
 
 func TestRegistryListsCoreTools(t *testing.T) {

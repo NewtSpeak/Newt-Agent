@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/auth"
-	"github.com/OwlSpeak/Owl-Agent/internal/tools"
+	"github.com/NewtSpeak/Newt-Agent/internal/auth"
+	"github.com/NewtSpeak/Newt-Agent/internal/tools"
 )
 
 const protocolVersion = "2024-11-05"
@@ -294,7 +294,7 @@ func getPrompt(name string, args map[string]string) (any, error) {
 		if goal == "" {
 			goal = "日常治理"
 		}
-		text = fmt.Sprintf(`你正在通过 OwlSpeak MCP/CLI 管理服务器。
+		text = fmt.Sprintf(`你正在通过 NewtSpeak MCP/CLI 管理服务器。
 
 服务器 ID: %s
 目标: %s
@@ -308,14 +308,14 @@ func getPrompt(name string, args map[string]string) (any, error) {
 	case "audit-review":
 		gid := args["guild_id"]
 		prefix := args["action_prefix"]
-		text = fmt.Sprintf(`审查 OwlSpeak 服务器审计日志。
+		text = fmt.Sprintf(`审查 NewtSpeak 服务器审计日志。
 
 guild_id: %s
 action 前缀过滤: %s（可空）
 
 请调用 audit.list，总结：谁做了什么、是否异常、是否需要后续限制/踢封。`, gid, prefix)
 	case "safe-ops":
-		text = `OwlSpeak Agent 安全规则:
+		text = `NewtSpeak Agent 安全规则:
 - 身份是用户委托 OAuth（aud=agent），不是 Bot
 - 禁止要求用户提供密码、refresh token、access token
 - 踢人/删频道/封禁/平台写操作等 destructive 工具必须 confirm=true，并先征得用户明确同意

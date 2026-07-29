@@ -60,7 +60,7 @@ jobs:
           GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: "0"
         run: |
-          go build -ldflags "-X github.com/OwlSpeak/Owl-Agent/internal/cmd.Version=ci -X github.com/OwlSpeak/Owl-Agent/internal/cmd.Commit=${GITHUB_SHA::7}" -o "owl-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./cmd/owl
+          go build -ldflags "-X github.com/NewtSpeak/Newt-Agent/internal/cmd.Version=ci -X github.com/NewtSpeak/Newt-Agent/internal/cmd.Commit=${GITHUB_SHA::7}" -o "owl-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" ./cmd/owl
       - uses: actions/upload-artifact@v4
         with:
           name: owl-${{ matrix.goos }}-${{ matrix.goarch }}

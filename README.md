@@ -1,6 +1,6 @@
-# Owl-Agent
+# Newt-Agent
 
-OwlSpeak **官方 Agent CLI**：以 **用户 OAuth 委托** 管理社区，并作为 **MCP / Skill** 入口供 AI 宿主调用。
+NewtSpeak **官方 Agent CLI**：以 **用户 OAuth 委托** 管理社区，并作为 **MCP / Skill** 入口供 AI 宿主调用。
 
 ```text
 owl login (设备码 / PKCE)
@@ -19,7 +19,7 @@ owl login (设备码 / PKCE)
 ```
 
 - **不收集密码**：授权在 Desktop / Web 完成  
-- 与 [OwlBotSdk](https://github.com/OwlSpeak/OwlBotSdk) 不同：此处是 **真人身份**，不是 bot token  
+- 与 [NewtBotSdk](https://github.com/NewtSpeak/NewtBotSdk) 不同：此处是 **真人身份**，不是 bot token  
 
 ## 功能
 
@@ -39,7 +39,7 @@ owl login (设备码 / PKCE)
 ## 仓库结构
 
 ```text
-Owl-Agent/
+Newt-Agent/
 ├── cmd/owl/              # 入口
 ├── internal/
 │   ├── api/              # OAuth + gapi/api HTTP 客户端
@@ -58,7 +58,7 @@ Owl-Agent/
 ## 安装与构建
 
 ```bash
-cd Owl-Agent
+cd Newt-Agent
 make build          # → bin/owl
 make test
 make install        # go install ./cmd/owl
@@ -146,9 +146,9 @@ owl mcp serve
 
 | 仓库 | 关系 |
 |------|------|
-| [Owl-Server](https://github.com/OwlSpeak/Owl-Server) | OAuth、`/gapi/v1`、`/api/v1` |
-| [Owl-Desktop](https://github.com/OwlSpeak/Owl-Desktop) | 授权页与深链 |
-| [OwlBotSdk](https://github.com/OwlSpeak/OwlBotSdk) | 机器人 SDK（另一身份平面） |
+| [Newt-Server](https://github.com/NewtSpeak/Newt-Server) | OAuth、`/gapi/v1`、`/api/v1` |
+| [Newt-Desktop](https://github.com/NewtSpeak/Newt-Desktop) | 授权页与深链 |
+| [NewtBotSdk](https://github.com/NewtSpeak/NewtBotSdk) | 机器人 SDK（另一身份平面） |
 
 ## 许可证
 

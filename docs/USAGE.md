@@ -1,6 +1,6 @@
-# Owl-Agent（CLI）使用文档
+# Newt-Agent（CLI）使用文档
 
-用户委托的 **CLI + MCP + Skill**：OAuth 登录后，以真人身份操作 OwlSpeak（服管、治理、社交、平台）。
+用户委托的 **CLI + MCP + Skill**：OAuth 登录后，以真人身份操作 NewtSpeak（服管、治理、社交、平台）。
 
 > 命令与工具全表见 [API.md](./API.md) · 深链 [DEEP-LINK.md](./DEEP-LINK.md)
 
@@ -19,7 +19,7 @@
 
 ```bash
 # 源码
-cd Owl-Agent
+cd Newt-Agent
 make build          # → bin/owl
 make install        # go install ./cmd/owl
 
@@ -169,7 +169,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 
 ## 6. Skill
 
-- 根目录 `Owl-Agent/SKILL.md`：总 skill  
+- 根目录 `Newt-Agent/SKILL.md`：总 skill  
 - `skills/owlspeak-guild-admin/SKILL.md`：服管专项  
 
 AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止索要密码或 refresh token**。
@@ -178,7 +178,7 @@ AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止�
 
 | 变量 / 项 | 说明 |
 |-----------|------|
-| `--server` | Owl-Server 公网根（无尾斜杠） |
+| `--server` | Newt-Server 公网根（无尾斜杠） |
 | `--profile` | 多账号隔离 |
 | `OWL_AGENT_NO_KEYRING=1` | token 写入 config 文件 |
 | config.json | `server_url` / `scope` / `client_id` 等 |
@@ -206,5 +206,5 @@ owl whoami
 | 文档 | 说明 |
 |------|------|
 | [API.md](./API.md) | 命令、Tools、底层 HTTP |
-| [OwlBotSdk](https://github.com/OwlSpeak/OwlBotSdk) | 机器人 SDK |
-| [Server 部署](https://github.com/OwlSpeak/Owl-Server/blob/main/docs/deploy/server.md) | Server 部署 |
+| [NewtBotSdk](https://github.com/NewtSpeak/NewtBotSdk) | 机器人 SDK |
+| [Server 部署](https://github.com/NewtSpeak/Newt-Server/blob/main/docs/deploy/server.md) | Server 部署 |

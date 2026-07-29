@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
-	"github.com/OwlSpeak/Owl-Agent/internal/auth"
-	"github.com/OwlSpeak/Owl-Agent/internal/config"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/auth"
+	"github.com/NewtSpeak/Newt-Agent/internal/config"
 )
 
 func (r *Registry) registerAll() {

@@ -9,8 +9,8 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "owl",
-	Short: "OwlSpeak CLI — OAuth 用户委托 + AI skill / MCP 工具",
-	Long: `owl 是 OwlSpeak 官方 Agent CLI。
+	Short: "NewtSpeak CLI — OAuth 用户委托 + AI skill / MCP 工具",
+	Long: `owl 是 NewtSpeak 官方 Agent CLI。
 
 登录后可管理服务器、频道、角色、成员与消息，并作为 AI skill / MCP 工具入口。
 密码不会进入本工具：使用设备码或 PKCE 在 Desktop / Web 授权页完成登录。

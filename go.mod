@@ -1,4 +1,4 @@
-module github.com/OwlSpeak/Owl-Agent
+module github.com/NewtSpeak/Newt-Agent
 
 go 1.26.0
 

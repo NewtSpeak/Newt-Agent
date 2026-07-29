@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/config"
+	"github.com/NewtSpeak/Newt-Agent/internal/config"
 )
 
 // 配置文件中 refresh 占位：真实 token 在 OS keyring。

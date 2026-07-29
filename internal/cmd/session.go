@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/OwlSpeak/Owl-Agent/internal/api"
-	"github.com/OwlSpeak/Owl-Agent/internal/auth"
-	"github.com/OwlSpeak/Owl-Agent/internal/config"
+	"github.com/NewtSpeak/Newt-Agent/internal/api"
+	"github.com/NewtSpeak/Newt-Agent/internal/auth"
+	"github.com/NewtSpeak/Newt-Agent/internal/config"
 	"github.com/spf13/cobra"
 )
 
