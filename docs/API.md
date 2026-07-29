@@ -256,10 +256,10 @@ server: owl-agent
 
 | URI | 内容 |
 |-----|------|
-| `owlspeak://status` | 登录/配置 |
-| `owlspeak://tools` | 工具清单 |
-| `owlspeak://whoami` | 用户信息 |
-| `owlspeak://guilds` | 已加入服务器 |
+| `newtspeak://status` | 登录/配置 |
+| `newtspeak://tools` | 工具清单 |
+| `newtspeak://whoami` | 用户信息 |
+| `newtspeak://guilds` | 已加入服务器 |
 
 **Prompts**：`moderate-guild` · `audit-review` · `safe-ops`
 
@@ -290,7 +290,7 @@ Tools 最终打到用户 API（路径随 Server 版本微调，以源码为准�
 
 ```bash
 curl -sH "Authorization: Bearer $TOKEN" \
-  https://owl-panel.example.com/gapi/v1/guilds
+  https://newt-panel.example.com/gapi/v1/guilds
 ```
 
 ---

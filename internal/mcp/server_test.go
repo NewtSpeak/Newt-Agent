@@ -20,7 +20,7 @@ func TestMCPInitializeResourcesPrompts(t *testing.T) {
 		`{"jsonrpc":"2.0","id":2,"method":"resources/list","params":{}}`,
 		`{"jsonrpc":"2.0","id":3,"method":"prompts/list","params":{}}`,
 		`{"jsonrpc":"2.0","id":4,"method":"prompts/get","params":{"name":"safe-ops"}}`,
-		`{"jsonrpc":"2.0","id":5,"method":"resources/read","params":{"uri":"owlspeak://status"}}`,
+		`{"jsonrpc":"2.0","id":5,"method":"resources/read","params":{"uri":"newtspeak://status"}}`,
 	}, "\n") + "\n")
 
 	s := &Server{Reg: reg, Reader: in, Writer: &out, ErrLog: &bytes.Buffer{}}

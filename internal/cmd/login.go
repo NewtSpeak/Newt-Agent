@@ -84,13 +84,13 @@ func loginDevice(server, scope string) {
 	fmt.Println("  设备码:", dc.UserCode)
 	fmt.Println("  打开:  ", dc.VerificationURIComplete)
 	fmt.Println()
-	fmt.Println("提示：已登录的 Desktop 可通过深链 owlspeak://oauth/device 打开。")
+	fmt.Println("提示：已登录的 Desktop 可通过深链 newtspeak://oauth/device 打开。")
 	fmt.Println("勿将密码或 refresh token 发给 AI。")
 	fmt.Println()
 
 	if !loginNoOpen {
 		_ = openBrowser(dc.VerificationURIComplete)
-		deep := fmt.Sprintf("owlspeak://oauth/device?user_code=%s&server=%s", dc.UserCode, server)
+		deep := fmt.Sprintf("newtspeak://oauth/device?user_code=%s&server=%s", dc.UserCode, server)
 		_ = openBrowser(deep)
 	}
 

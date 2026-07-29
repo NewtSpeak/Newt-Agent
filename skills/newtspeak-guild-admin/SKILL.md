@@ -1,11 +1,11 @@
 ---
-name: owlspeak-guild-admin
+name: newtspeak-guild-admin
 description: Full NewtSpeak guild administration via owl CLI/MCP — channels, roles, members, invites, messages.
 ---
 
 # NewtSpeak 服务器管理
 
-依赖 `owl login` 与根 skill `owlspeak-agent`。
+依赖 `owl login` 与根 skill `newtspeak-agent`。
 
 ## 频道
 

@@ -9,7 +9,7 @@
 | | Agent CLI | Bot SDK |
 |--|-----------|---------|
 | 身份 | OAuth 用户 | 机器人 |
-| 凭证 | access/refresh（keyring） | `owlbot_…` |
+| 凭证 | access/refresh（keyring） | `newtbot_…` |
 | API | `/gapi/v1`、可选 `/api/v1` | `/bot-api/v1` |
 | 入口 | `owl` 命令 / MCP / Skill | 各语言库 |
 
@@ -46,16 +46,16 @@ owl completion powershell | Out-String | Invoke-Expression
 ### 设备码（默认）
 
 ```bash
-owl login --server https://owl-panel.example.com
-# 打印 user_code + 打开浏览器 / owlspeak://oauth/device
+owl login --server https://newt-panel.example.com
+# 打印 user_code + 打开浏览器 / newtspeak://oauth/device
 ```
 
 ### PKCE（本机 loopback）
 
 ```bash
-owl login --server https://owl-panel.example.com \
+owl login --server https://newt-panel.example.com \
   --method pkce \
-  --client-origin https://owl-panel.example.com
+  --client-origin https://newt-panel.example.com
 ```
 
 ### 平台管理 scope
@@ -150,7 +150,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 ```json
 {
   "mcpServers": {
-    "owlspeak": {
+    "newtspeak": {
       "command": "owl",
       "args": ["mcp", "serve"],
       "env": {}
@@ -162,7 +162,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 | 能力 | 内容 |
 |------|------|
 | **tools** | 80+（与 `owl tools list` 同源） |
-| **resources** | `owlspeak://status` `tools` `whoami` `guilds` |
+| **resources** | `newtspeak://status` `tools` `whoami` `guilds` |
 | **prompts** | `moderate-guild` / `audit-review` / `safe-ops` |
 
 危险工具参数必须带 `confirm: true`（或宿主侧等价确认）。
@@ -170,7 +170,7 @@ owl mcp serve          # stdio JSON-RPC 2.0
 ## 6. Skill
 
 - 根目录 `Newt-Agent/SKILL.md`：总 skill  
-- `skills/owlspeak-guild-admin/SKILL.md`：服管专项  
+- `skills/newtspeak-guild-admin/SKILL.md`：服管专项  
 
 AI Agent 加载 skill 后，优先通过 MCP/`owl tools call` 操作，**禁止索要密码或 refresh token**。
 

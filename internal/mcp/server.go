@@ -196,25 +196,25 @@ func (s *Server) dispatch(method string, params json.RawMessage) (any, error) {
 func listResources() []map[string]any {
 	return []map[string]any{
 		{
-			"uri":         "owlspeak://status",
+			"uri":         "newtspeak://status",
 			"name":        "session-status",
 			"description": "当前 owl profile 登录状态与 token 存储后端",
 			"mimeType":    "application/json",
 		},
 		{
-			"uri":         "owlspeak://tools",
+			"uri":         "newtspeak://tools",
 			"name":        "tool-catalog",
 			"description": "全部 tool 名称与说明（只读目录）",
 			"mimeType":    "application/json",
 		},
 		{
-			"uri":         "owlspeak://whoami",
+			"uri":         "newtspeak://whoami",
 			"name":        "current-user",
 			"description": "OAuth 用户信息（需已登录）",
 			"mimeType":    "application/json",
 		},
 		{
-			"uri":         "owlspeak://guilds",
+			"uri":         "newtspeak://guilds",
 			"name":        "my-guilds",
 			"description": "已加入的服务器列表（需已登录）",
 			"mimeType":    "application/json",
@@ -227,17 +227,17 @@ func readResource(s *Server, uri string) (any, error) {
 	var text string
 	var err error
 	switch uri {
-	case "owlspeak://status":
+	case "newtspeak://status":
 		text, err = tools.FormatResult(auth.SessionMeta())
-	case "owlspeak://tools":
+	case "newtspeak://tools":
 		text, err = tools.FormatResult(s.Reg.List())
-	case "owlspeak://whoami":
+	case "newtspeak://whoami":
 		res, e := s.Reg.Call("whoami", nil, false)
 		if e != nil {
 			return nil, e
 		}
 		text, err = tools.FormatResult(res)
-	case "owlspeak://guilds":
+	case "newtspeak://guilds":
 		res, e := s.Reg.Call("guilds.list", nil, false)
 		if e != nil {
 			return nil, e

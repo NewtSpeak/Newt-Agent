@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "owlspeak": {
+    "newtspeak": {
       "command": "C:\\\\path\\\\to\\\\owl.exe",
       "args": ["mcp", "serve"]
     }

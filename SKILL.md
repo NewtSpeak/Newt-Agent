@@ -1,5 +1,5 @@
 ---
-name: owlspeak-agent
+name: newtspeak-agent
 description: Operate NewtSpeak via CLI and MCP — multi-profile OAuth, guild admin, stickers, social, voice, audit, platform; MCP tools/resources/prompts.
 ---
 
@@ -10,7 +10,7 @@ description: Operate NewtSpeak via CLI and MCP — multi-profile OAuth, guild ad
 ```bash
 cd Newt-Agent && go install ./cmd/owl
 
-# 设备码（默认）：打开 Desktop/Web 或 owlspeak:// 深链
+# 设备码（默认）：打开 Desktop/Web 或 newtspeak:// 深链
 owl login --server https://a.example --profile home
 
 # PKCE：本机 loopback 回调（适合有浏览器环境）
@@ -34,7 +34,7 @@ owl mcp serve
 能力：
 
 - **tools/** — 80+ 管理工具  
-- **resources/** — `owlspeak://status|tools|whoami|guilds`  
+- **resources/** — `newtspeak://status|tools|whoami|guilds`  
 - **prompts/** — `moderate-guild` / `audit-review` / `safe-ops`  
 
 危险工具必须 `confirm: true`。

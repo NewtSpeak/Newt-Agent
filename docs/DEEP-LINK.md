@@ -4,10 +4,10 @@
 
 | URL | 作用 |
 |-----|------|
-| `owlspeak://oauth/device?user_code=XXXX-XXXX&server=https://...` | 打开设备码授权页 |
-| `owlspeak://oauth/authorize?...` | PKCE 授权页 |
-| `owlspeak://invite?code=...&server=...` | 社区邀请 |
-| `owlspeak://register?code=...&server=...` | 注册邀请 |
+| `newtspeak://oauth/device?user_code=XXXX-XXXX&server=https://...` | 打开设备码授权页 |
+| `newtspeak://oauth/authorize?...` | PKCE 授权页 |
+| `newtspeak://invite?code=...&server=...` | 社区邀请 |
+| `newtspeak://register?code=...&server=...` | 注册邀请 |
 
 ## 桌面端实现
 
@@ -19,7 +19,7 @@
 
 ```bash
 owl login --server https://api.example
-# 会尝试打开浏览器 + owlspeak://oauth/device?...
+# 会尝试打开浏览器 + newtspeak://oauth/device?...
 ```
 
 开发态：`tauri dev` 一般会注册 scheme；正式安装包安装后 OS 级注册生效。

@@ -34,7 +34,7 @@ owl login (设备码 / PKCE)
 | **统一 Tools** | CLI `tools call` 与 MCP **同一注册表**（80+） |
 | **MCP** | tools / resources / prompts（stdio JSON-RPC） |
 | **Skill** | 给 AI Agent 的操作说明（根目录与 `skills/`） |
-| **深链** | `owlspeak://oauth/device` 等配合 Desktop |
+| **深链** | `newtspeak://oauth/device` 等配合 Desktop |
 
 ## 仓库结构
 
@@ -74,11 +74,11 @@ go build -o owl ./cmd/owl
 
 ```bash
 # 设备码（默认）+ 深链
-owl login --server https://owl-panel.example.com
+owl login --server https://newt-panel.example.com
 
 # PKCE
-owl login --server https://owl-panel.example.com \
-  --method pkce --client-origin https://owl-panel.example.com
+owl login --server https://newt-panel.example.com \
+  --method pkce --client-origin https://newt-panel.example.com
 
 # 平台管理 scope
 owl login --server https://… --platform
@@ -109,7 +109,7 @@ owl mcp serve
 | 类型 | 内容 |
 |------|------|
 | tools | 与 `owl tools list` 同源 |
-| resources | `owlspeak://status` · `tools` · `whoami` · `guilds` |
+| resources | `newtspeak://status` · `tools` · `whoami` · `guilds` |
 | prompts | `moderate-guild` · `audit-review` · `safe-ops` |
 
 ## 主要命令
@@ -130,7 +130,7 @@ owl mcp serve
 | [**docs/API.md**](docs/API.md) | 命令树、Tools 全表、OAuth/gapi |
 | [docs/DEEP-LINK.md](docs/DEEP-LINK.md) | 深链与单实例 |
 | [SKILL.md](SKILL.md) | AI Skill 总说明 |
-| [skills/owlspeak-guild-admin/](skills/owlspeak-guild-admin/) | 服管专项 Skill |
+| [skills/newtspeak-guild-admin/](skills/newtspeak-guild-admin/) | 服管专项 Skill |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 贡献指南 |
 | [examples/mcp.json](examples/mcp.json) | MCP 配置示例 |
 

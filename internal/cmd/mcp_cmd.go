@@ -22,7 +22,7 @@ var mcpServeCmd = &cobra.Command{
 
   {
     "mcpServers": {
-      "owlspeak": {
+      "newtspeak": {
         "command": "owl",
         "args": ["mcp", "serve"]
       }
