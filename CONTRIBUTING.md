@@ -12,7 +12,7 @@ go build -o bin/newt ./cmd/newt
 
 | 路径 | 说明 |
 |------|------|
-| `cmd/owl` | 入口 |
+| `cmd/newt` | 入口 |
 | `internal/tools` | CLI/MCP 共用工具注册表 |
 | `internal/mcp` | MCP stdio server |
 | `internal/api` | HTTP / OAuth 客户端 |

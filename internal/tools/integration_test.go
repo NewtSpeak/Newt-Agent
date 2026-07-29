@@ -67,12 +67,12 @@ func TestToolsAgainstMockServer(t *testing.T) {
 	}
 }
 
-// TestOAuthDeviceFlowE2E 在设置 TEST_OWL_SERVER 时对真实服务器跑 device flow 冒烟（可选）。
+// TestOAuthDeviceFlowE2E 在设置 TEST_NEWT_SERVER 时对真实服务器跑 device flow 冒烟（可选）。
 // 需要可登录的测试账号不在此自动化（device 需人工同意），故仅检测 device/code 端点存活。
 func TestOAuthDeviceCodeEndpointLive(t *testing.T) {
-	base := os.Getenv("TEST_OWL_SERVER")
+	base := os.Getenv("TEST_NEWT_SERVER")
 	if base == "" {
-		t.Skip("TEST_OWL_SERVER not set")
+		t.Skip("TEST_NEWT_SERVER not set")
 	}
 	client := api.New(base)
 	dc, err := client.RequestDeviceCode("owl-cli", "profile gapi.full offline_access")
